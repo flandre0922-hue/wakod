@@ -15,7 +15,8 @@ export async function POST(request: Request): Promise<NextResponse> {
         // Authenticate users here if needed
         // For now, allow all uploads to a /videos directory
         return {
-          allowedContentTypes: ['video/mp4', 'video/quicktime', 'video/webm', 'video/x-matroska'],
+          allowedContentTypes: ['video/*'],
+          maximumSizeInBytes: 50 * 1024 * 1024, // 50MB
           tokenPayload: JSON.stringify({
             // optional, sent to your server on upload completion
             userId: 'anonymous', 
