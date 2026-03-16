@@ -151,7 +151,7 @@ export async function POST(req: Request) {
       console.log(`Deleted from Gemini: ${uploadResult.file.name}`);
       
       // Delete from Vercel Blob
-      await del(videoUrl);
+      await del(videoUrl, { token: process.env.BLOB_READ_WRITE_TOKEN });
       console.log(`Deleted from Vercel Blob: ${videoUrl}`);
     } catch(e) {
       console.error("Failed to cleanup video files:", e)
